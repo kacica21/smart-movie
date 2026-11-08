@@ -5,6 +5,9 @@ import MovieCard from "./components/MovieCard";
 import Row from "./components/Row";
 import MovieModal from "./components/MovieModal";
 import MovieDNA from "./components/MovieDNA";
+import MoodPicker from "./components/MoodPicker";
+import ForYou from "./components/ForYou";
+import Economics from "./components/Economics";
 import "./App.css";
 
 export default function App() {
@@ -87,13 +90,16 @@ export default function App() {
     <div className="app">
       <h1>🎬 Smart Movie</h1>
 
-      <div className="tabs">
-        <button className={tab === "explore" ? "on" : ""} onClick={() => setTab("explore")}>Explorează</button>
-        <button className={tab === "watchlist" ? "on" : ""} onClick={() => setTab("watchlist")}>
-          Watchlist ({watchlist.length})
-        </button>
-        <button className={tab === "dna" ? "on" : ""} onClick={() => setTab("dna")}>Movie DNA</button>
-      </div>
+     <div className="tabs">
+  <button className={tab === "mood" ? "on" : ""} onClick={() => setTab("mood")}>🎭 Mood</button>
+  <button className={tab === "explore" ? "on" : ""} onClick={() => setTab("explore")}>Explorează</button>
+  <button className={tab === "foryou" ? "on" : ""} onClick={() => setTab("foryou")}>✨ Pentru tine</button>
+  <button className={tab === "watchlist" ? "on" : ""} onClick={() => setTab("watchlist")}>
+    Watchlist ({watchlist.length})
+  </button>
+  <button className={tab === "dna" ? "on" : ""} onClick={() => setTab("dna")}>Movie DNA</button>
+  <button className={tab === "econ" ? "on" : ""} onClick={() => setTab("econ")}>📊 Economic</button>
+</div>
 
       {tab === "explore" && (
         <>
@@ -166,6 +172,10 @@ export default function App() {
       )}
 
       {tab === "dna" && <MovieDNA library={library} />}
+      {tab === "mood" && <MoodPicker onOpen={setOpenId} />}
+      {tab === "foryou" && <ForYou library={library} onOpen={setOpenId} />}
+      {tab === "econ" && <Economics onOpen={setOpenId} />}
+      const [tab, setTab] = useState("mood");
 
       {openId && (
         <MovieModal id={openId} onClose={() => setOpenId(null)} onOpen={setOpenId} library={library} setLibrary={setLibrary} />

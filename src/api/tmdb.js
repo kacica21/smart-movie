@@ -25,6 +25,8 @@ export const discoverMovies = ({ genre, year, minRating, maxRuntime, actor, sort
   if (actor) p.with_cast = actor;
   return get("/discover/movie", p);
 };
-
+export const discoverRaw = (params) =>
+  get("/discover/movie", { "vote_count.gte": 300, ...params });
+export const getBasic = (id) => get(`/movie/${id}`);
 export const poster = (path) =>
   path ? `https://image.tmdb.org/t/p/w342${path}` : "https://placehold.co/342x513?text=Fara+poster";

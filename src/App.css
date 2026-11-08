@@ -44,3 +44,17 @@ footer { text-align: center; color: #778; font-size: 12px; margin: 40px 0 10px; 
   .modal-top { flex-direction: column; }
   .modal-top > img { width: 120px; }
 }
+.moods { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+.mood { background: #1b1c33; color: #fff; border: 2px solid transparent; border-radius: 14px; padding: 16px 8px; cursor: pointer; font-size: 14px; transition: transform .2s; }
+.mood span { display: block; font-size: 34px; margin-bottom: 6px; }
+.mood:hover { transform: translateY(-3px); }
+.mood.on { border-color: #8b5cf6; background: #2a2450; }
+.center select { padding: 8px; border-radius: 8px; border: none; margin: 4px; }
+.match-wrap { position: relative; }
+.match { position: absolute; top: 8px; left: 8px; z-index: 2; background: #22c55e; color: #000; font-weight: bold; font-size: 12px; padding: 3px 8px; border-radius: 12px; }
+.why { display: block; font-size: 11px; color: #aab; margin: 4px 4px 0; }
+.year-input { padding: 8px; border-radius: 8px; border: none; width: 90px; }
+.table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid #334; font-size: 14px; }
+.table tbody tr { cursor: pointer; }
+.table tbody tr:hover { background: #1b1c33; }

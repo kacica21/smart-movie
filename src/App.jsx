@@ -8,6 +8,7 @@ import MovieDNA from "./components/MovieDNA";
 import MoodPicker from "./components/MoodPicker";
 import ForYou from "./components/ForYou";
 import Economics from "./components/Economics";
+import Swipe from "./components/Swipe";
 import "./App.css";
 
 export default function App() {
@@ -77,7 +78,7 @@ export default function App() {
   };
 
   const watchlist = Object.values(library).filter((m) => m.watchlist);
-  const rated = Object.values(library).filter((m) => m.rating);
+  const rated = Object.values(library).filter((m) => m.rating && !m.swiped);
 
   const rowGenres = [
     { id: 28, name: "Action" },
@@ -91,14 +92,14 @@ export default function App() {
       <h1>🎬 Smart Movie</h1>
 
      <div className="tabs">
-  <button className={tab === "mood" ? "on" : ""} onClick={() => setTab("mood")}>🎭 Mood</button>
-  <button className={tab === "explore" ? "on" : ""} onClick={() => setTab("explore")}>Explorează</button>
-  <button className={tab === "foryou" ? "on" : ""} onClick={() => setTab("foryou")}>✨ Pentru tine</button>
-  <button className={tab === "watchlist" ? "on" : ""} onClick={() => setTab("watchlist")}>
+  <button className={tab === "mood" ? "on" : ""} onClick={() => setTab("mood")}>🎭 Mood</button><button className={tab === "swipe" ? "on" : ""} onClick={() => setTab("swipe")}>👆 Swipe</button>
+  <button className={tab === "explore" ? "on" : ""} onClick={() => setTab("explore")}>Explorează</button>{tab === "swipe" && <Swipe library={library} setLibrary={setLibrary} onOpen={setOpenId} />}
+  <button className={tab === "foryou" ? "on" : ""} onClick={() => setTab("foryou")}>✨ Pentru tine</button>{tab === "swipe" && <Swipe library={library} setLibrary={setLibrary} onOpen={setOpenId} />}
+  <button className={tab === "watchlist" ? "on" : ""} onClick={() => setTab("watchlist")}>{tab === "swipe" && <Swipe library={library} setLibrary={setLibrary} onOpen={setOpenId} />}
     Watchlist ({watchlist.length})
   </button>
-  <button className={tab === "dna" ? "on" : ""} onClick={() => setTab("dna")}>Movie DNA</button>
-  <button className={tab === "econ" ? "on" : ""} onClick={() => setTab("econ")}>📊 Economic</button>
+  <button className={tab === "dna" ? "on" : ""} onClick={() => setTab("dna")}>Movie DNA</button>{tab === "swipe" && <Swipe library={library} setLibrary={setLibrary} onOpen={setOpenId} />}
+  <button className={tab === "econ" ? "on" : ""} onClick={() => setTab("econ")}>📊 Economic</button>{tab === "swipe" && <Swipe library={library} setLibrary={setLibrary} onOpen={setOpenId} />}
 </div>
 
       {tab === "explore" && (
